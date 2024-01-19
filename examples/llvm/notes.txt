@@ -1,0 +1,29 @@
+int => i32
+float => float
+boolean => i1
+ptr => untyped pointer (void *)
+Array<int> nums[5] => @nums = alloca [5 * i32]
+my_func(x) => %r = call i32 @my_func(i32 %x)
+pointer function call => %r = call i32 %my_func(i32 %x)
+String => @.str = private constant [15 x i8] c"hello, world!\0A\00"
+
+import built in function call => declare i32 @printf(i8*, ...)
+
+INT_MAX => i32 - 1
+FLOAT_MAX => float - 1
+
+br i1 => if boolean
+
+switch(value) {
+    case 0:
+        // do something
+    case 1:
+        // do another thing
+}
+=>
+switch i32 %value, label %default [
+    i32 0, label %if_zero
+    i32 1, lavel %if_one,
+    ; etc
+]
+
