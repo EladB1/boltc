@@ -113,8 +113,15 @@ define i32 @pow_optimized(i32 %x, i32 %y) {
 ; main function
 define i32 @main() {
     entry:
-        %mass = alloca i32
-        store i32 2, i32* %mass
-
+        %mass = alloca double
+        store double 2.0, ptr %mass
+        %height = alloca double
+        store double 25.0, double* %height
+        %radius = alloca double
+        store double 3.4, double* %radius
+        %pe = call double @potential_energy(double %mass, double %height)
+        %circ = call double @circumference(double %radius)
+        %area.1 = call double @area(double %radius)
+        %1 = alloca [15 x i8] c"hello, world!\0A\00"
         ret i32 0
 }

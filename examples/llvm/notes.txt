@@ -1,13 +1,16 @@
 int => i32
 double => double
 boolean => i1
+char => i8
 ptr => untyped pointer (void *)
 Array<int> nums[5] => @nums = alloca [5 * i32]
 my_func(x) => %r = call i32 @my_func(i32 %x)
 pointer function call => %r = call i32 %my_func(i32 %x)
 String => @.str = private constant [15 x i8] c"hello, world!\0A\00"
 
-import built in function call => declare i32 @printf(i8*, ...)
+string literals cannot be stored locally, they must be global
+
+import built in function call => declare i32 @printf(ptr noundef, ...)
 
 INT_MAX => i32 - 1
 DOUBLE_MAX => double - 1
@@ -27,3 +30,19 @@ switch i32 %value, label %default [
     ; etc
 ]
 
+int x = isPositive ? 0 : 1 => select i1 %1 i32 0, i32 1
+
+print an integer:
+@intFormatStr = private constant [2 x i8] c"%d"
+@i = constant i32 2
+
+define i32 @main() {
+entry:
+  %0 = load i32* @i
+  %1 = add i32 2, %0
+  %str = getelementptr inbounds [2 x i8]* @intFormatStr, i32 0, i32 0
+  %call = call i32 (i8*, ...)* @printf(i8* %str, i32 %1)
+  ret i32 1
+}
+
+declare i32 @printf(i8*, ...)

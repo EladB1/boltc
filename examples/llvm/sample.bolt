@@ -47,5 +47,6 @@ fn main(): int {
     double pe = potential_energy(mass, height);
     double circ = circumference(radius);
     double area = area(radius);
+    print("hello, world!")
     return 0;
 }
