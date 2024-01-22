@@ -1,5 +1,5 @@
 int => i32
-float => float
+double => double
 boolean => i1
 ptr => untyped pointer (void *)
 Array<int> nums[5] => @nums = alloca [5 * i32]
@@ -10,7 +10,7 @@ String => @.str = private constant [15 x i8] c"hello, world!\0A\00"
 import built in function call => declare i32 @printf(i8*, ...)
 
 INT_MAX => i32 - 1
-FLOAT_MAX => float - 1
+DOUBLE_MAX => double - 1
 
 br i1 => if boolean
 

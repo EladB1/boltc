@@ -1,23 +1,23 @@
 // global vars
-const float pi = 3.14;
-const float e = 2.718;
-const float g = -9.8;
+const double pi = 3.14;
+const double e = 2.718;
+const double g = -9.8;
 boolean unused = true;
 
 // non-main functions
-fn weight(float mass): float {
+fn weight(double mass): double {
     return mass * g;
 }
 
-fn potential_energy(float mass, float height): float {
+fn potential_energy(double mass, double height): double {
     return weight(mass) * height;
 }
 
-fn circumference(float radius): float {
+fn circumference(double radius): double {
     return 2 * pi * radius;
 }
 
-fn area(float radius): float {
+fn area(double radius): double {
     return pi * radius * radius;
 }
 
@@ -43,9 +43,9 @@ fn pow(int x, int y): int {
 fn main(): int {
     const int mass = 2;
     const int height = 25;
-    const float radius = 3.4;
-    float pe = potential_energy(mass, height);
-    float circ = circumference(radius);
-    float area = area(radius);
+    const double radius = 3.4;
+    double pe = potential_energy(mass, height);
+    double circ = circumference(radius);
+    double area = area(radius);
     return 0;
 }

@@ -1,43 +1,43 @@
 ; global vars
-@pi = constant float 3.14
-@e = constant float 2.718
-@g = constant float -9.8
+@pi = constant double 3.14
+@e = constant double 2.718
+@g = constant double -9.8
 @unused = global i1 true
 
 ; non-main functions
-define float @weight(float noundef %0) {
-    %2 = alloca float
-    store float %0, ptr %2
-    %3 = load float, ptr %2
-    %4 = fmul %3, 0xC0239999A0000000
-    ret float %4
-}
-
-define float @potential_energy(float noundef %0, float noundef %1) {
-    %3 = alloca float
-    %4 = alloca float
-    store float %0, ptr %3
-    store float %1, ptr %4
-    %5 = load float, ptr %3
-    %6 = call float @weight(float noundef %5)
-    %7 = load float, ptr %4
-    %8 = fmul float %6, %7
-    ret float %8
-}
-
-define float @circumference() {
-
-}
-
-define float @area(float noundef %2) {
-    %1 = alloca float
-    store float %1, ptr %2
+define double @weight(double noundef %0) {
+    %2 = alloca double
+    store double %0, ptr %2
     %3 = load double, ptr %2
-    %4 = load float, @pi
-    %5 = fmul float %3, %4
-    %6 = load float ptr @pi
-    %7 = fmul float %5, %6
-    ret float %7
+    %4 = fmul %3, 0xC0239999A0000000
+    ret double %4
+}
+
+define double @potential_energy(double noundef %0, double noundef %1) {
+    %3 = alloca double
+    %4 = alloca double
+    store double %0, ptr %3
+    store double %1, ptr %4
+    %5 = load double, ptr %3
+    %6 = call double @weight(double noundef %5)
+    %7 = load double, ptr %4
+    %8 = fmul double %6, %7
+    ret double %8
+}
+
+define double @circumference() {
+
+}
+
+define double @area(double noundef %2) {
+    %1 = alloca double
+    store double %1, ptr %2
+    %3 = load double, ptr %2
+    %4 = load double, @pi
+    %5 = fmul double %3, %4
+    %6 = load double ptr @pi
+    %7 = fmul double %5, %6
+    ret double %7
 
 }
 
